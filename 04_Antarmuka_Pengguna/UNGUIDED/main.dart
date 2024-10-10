@@ -56,7 +56,7 @@ class WisataBanyumasScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final wisata = wisataList[index];
             return Padding(
-              padding: const EdgeInsets.all(4.0), // Mengurangi padding di sekitar Card
+              padding: const EdgeInsets.all(4.0),
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -71,20 +71,20 @@ class WisataBanyumasScreen extends StatelessWidget {
                       ),
                       child: Image.network(
                         wisata.imageUrl,
-                        height: 100, // Mengurangi tinggi gambar
+                        height: 100,
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(6.0), // Mengurangi padding di dalam Card
+                      padding: const EdgeInsets.all(6.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
                             wisata.nama,
                             style: TextStyle(
-                              fontSize: 16, // Mengurangi ukuran font
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.green[700],
                               shadows: [
@@ -96,17 +96,17 @@ class WisataBanyumasScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 2), // Mengurangi jarak antara elemen
+                          SizedBox(height: 2),
                           Text(
                             wisata.deskripsi,
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                              fontSize: 10, // Mengurangi ukuran font
+                              fontSize: 10,
                               height: 1.2,
                               color: Colors.black87,
                             ),
                           ),
-                          SizedBox(height: 4), // Mengurangi jarak antara elemen
+                          SizedBox(height: 4),
                           Align(
                             alignment: Alignment.centerRight,
                             child: ElevatedButton(
@@ -115,15 +115,14 @@ class WisataBanyumasScreen extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4), // Padding tombol
+                                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                               ),
                               onPressed: () {
-                                // Tindakan saat tombol ditekan
                               },
                               child: Text(
                                 'Kunjungi',
                                 style: TextStyle(
-                                  fontSize: 10, // Ukuran font tombol lebih kecil
+                                  fontSize: 10,
                                   color: Colors.white,
                                 ),
                               ),
