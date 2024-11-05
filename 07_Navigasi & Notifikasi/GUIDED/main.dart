@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:modul_07/pages/mypage.dart';
+import 'package:modul_7/pages/mypage.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,8 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyPage(), // Menggunakan MyPage sebagai halaman awal
+      home: MyPage(),
     );
   }
 }
-
