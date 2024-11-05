@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:modul_07/models/product.dart';
-import 'package:modul_07/pages/detailpage.dart';
-import 'package:intl/intl.dart'; // Tambahkan package intl untuk memformat harga
+import 'package:modul_7/model/product.dart';
+import 'package:modul_7/pages/detailpage.dart';
 
 class MyPage extends StatelessWidget {
   MyPage({super.key});
 
-  final List<Product> products = [
+   final List<Product> products = [
     Product(
         id: 1,
         nama: 'Mouse Gaming',
@@ -30,78 +29,44 @@ class MyPage extends StatelessWidget {
         deskripsi: 'Headset gaming ini memiliki desain yang futuristik dan mencolok'),
   ];
 
-  final currencyFormatter = NumberFormat.currency(locale: 'id', symbol: 'Rp', decimalDigits: 0);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('MasNopal Store'),
+        title: Text('Class Model'),
         centerTitle: true,
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.blue[400],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            final product = products[index];
-            return Card(
-              elevation: 4,
-              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: ListTile(
-                contentPadding: EdgeInsets.all(10),
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    product.gambarUrl,
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
+      body: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+        final product = products[index];
+        return ListTile(
+          leading: Image.network(
+            product.gambarUrl,
+            width: 100,
+            height: 100,
+          ),
+          title: Text(product.nama),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Rp${product.harga}'),
+              Text(product.deskripsi),],
+          ),
+          onTap: () {
+            print('tap layar berhasil');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => DetailPage(
+                  data: Icon(Icons.notifications_outlined),
                 ),
-                title: Text(
-                  product.nama,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        currencyFormatter.format(product.harga),
-                        style: TextStyle(color: Colors.blue[600], fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        product.deskripsi,
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ],
-                  ),
-                ),
-                trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue[600]),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => DetailPage(
-                        product:product ,
-                      ),
-                    ),
-                  );
-                },
               ),
             );
           },
-        ),
-      ),
+        );
+      })
     );
   }
 }
-
